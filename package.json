@@ -1,0 +1,16 @@
+{
+  "name": "backend_project",
+  "version": "1.0.0",
+  "description": "backend project for learning ",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "keywords": [
+    "node",
+    "akshay",
+    "backend"
+  ],
+  "author": "@Akshay Kathwate",
+  "license": "ISC"
+}
