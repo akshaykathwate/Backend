@@ -6,11 +6,11 @@ class ApiError extends Error {
     statck = ""
   ) {
     super(message),
-      (this.statusCode = statusCode),
-      (this.data = null),
-      (this.message = message),
-      (this.success = false),
-      (this.errors = this.errors);
+      this.statusCode = statusCode,
+      this.data = null,
+      this.message = message,
+      this.success = false,
+      this.errors = errors;
 
     if (statck != null) {
       this.statck = statck;
@@ -19,3 +19,5 @@ class ApiError extends Error {
     }
   }
 }
+
+export default ApiError;
