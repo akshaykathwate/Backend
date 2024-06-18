@@ -6,3 +6,5 @@ class ApiResponse extends Error{
         this.success=statusCode<400;
     }
 }
+
+export {ApiResponse};

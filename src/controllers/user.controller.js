@@ -1,6 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import ApiError from "../utils/Apierror.js";
 import {uploadOnCloudinary} from "../utils/uploadOnCloudinary.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
 
 const registerUser = asyncHandler(async (req, res) => {
   
@@ -36,14 +37,27 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // uploading data to database
-    const User = User.create({
+    const user = await User.create({
       fullName,
       avatar:avatar.url,
-      coverImage:coverImage?.url || "",
+      coverImage:coverImage?.url ||"",
       email,
       password,
       username: username.toLowercase(), 
     })
+
+   const createdUser = user.findById(user.id).select(
+    "-password -refreshToken"
+   )
+
+   if(!createdUser){
+    throw new ApiError(500,"Error Occured while registering the user");
+   }
+
+   return res.status(201).json(
+    new ApiResponse(200,createdUser,"User Registerd Successfully")
+   )
+
     
 })
 
