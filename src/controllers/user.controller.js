@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import ApiError from "../utils/Apierror.js";
-import {uploadOnCloudinary} from "../utils/uploadOnCloudinary.js";
+import {uploadOnCloudinary} from "../utils/Cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -56,9 +56,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
    return res.status(201).json(
     new ApiResponse(200,createdUser,"User Registerd Successfully")
-   )
-
-    
+   )  
 })
 
 export {

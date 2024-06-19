@@ -43,13 +43,11 @@ const userSchema = new Schema({
    },
    refreshToken:{
     type: "String",
-
    }
 },{timestamps:true});
 
 userSchema.pre("save",async function (next) {
   if(!this.isModified("password")) return exit();
-
   this.password = await bcrypt.hash(this.password,10)
   next();
 });
